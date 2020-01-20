@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'OportunidadesController@main')->name('main');
+Route::post('/oportunidade/create', 'OportunidadesController@Insert');

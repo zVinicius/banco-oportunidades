@@ -7,14 +7,18 @@ use Illuminate\Http\Request;
 
 class OportunidadesController extends Controller{
     public function Main(Request $request){     
-        // $nivelIngles = [
-        //     new NivelIngles(1, 'Basico'),
-        //     new NivelIngles(1, 'Intermediário'),
-        //     new NivelIngles(1, 'Avançado')
-        // ];  
-
         return View('banco-oportunidades.main', compact('niveisIngles'));
+    }
 
+    public function Insert(Request $request){
+        $nome = $request->get('nome');
+        $email = $request->get('email');
+        $fone = $request->get('fone');
+        $apresentacao = $request->get('apresentacao');
+        $linkedIn = $request->get('linkedIn');
+        $gitHub = $request->get('gitHub');
+        $pretencaoSal = $request->get('pretencaoSalarial');
+        $curriculo = $request->get('curriculo');        
     }
 }
 

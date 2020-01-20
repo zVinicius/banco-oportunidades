@@ -2,7 +2,9 @@
 
 namespace App;
 
-class NivelIngles{
+use Illuminate\Database\Eloquent\Model;
+
+class NivelIngles extends Model{
     public $Codigo;
     public $Descricao;
 

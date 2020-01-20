@@ -2,7 +2,8 @@
 
 @section('conteudo')    
     <div class="container">
-        <form action="" method="post">
+        <form action="/oportunidade/create" method="post">
+            @csrf
             <div class="form-group" >
                 <label >Informações Pessoais</label>
                 <input class="form-control mt-2" type="text" placeholder="Nome Completo" name="nome">
@@ -12,7 +13,7 @@
 
             <div class="form-group">
                 <label for="carta-apresentacao">Carte de Apresentação</label>
-                <textarea class="form-control" id="carta-apresentacao" rows="3"></textarea>
+                <textarea class="form-control" id="carta-apresentacao" name="apresentacao" rows="3"></textarea>
             </div>
 
             <div class="form-group" >
@@ -22,9 +23,9 @@
                 <div class="mt-2">
                     <select class="form-control" id="exampleFormControlSelect2">
                         <option value="0" selected disabled>Nível de Inglês</option>
-                        <option value="1" >Iniciante</option>
-                        <option value="2" >Intermediário</option>
-                        <option value="3" >Avançado</option>                    
+                        <option value="1" >Básico</option>                        
+                        <option value="2" >Intermediário</option>                        
+                        <option value="3" >Avançado</option>                        
                     </select>                
                 </div>                
                 <input class="form-control mt-2" type="text" placeholder="Pretenção Salarial" name="pretencaoSalarial">
