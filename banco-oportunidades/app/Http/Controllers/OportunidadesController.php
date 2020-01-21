@@ -11,14 +11,26 @@ class OportunidadesController extends Controller{
     }
 
     public function Insert(Request $request){
+
+        $request->validate([
+            'nome'=>'required',
+            'email'=>'required',
+            'curriculo'=>'required|mimes:pdf,doc'
+        ]);
+        
         $nome = $request->get('nome');
         $email = $request->get('email');
         $fone = $request->get('fone');
         $apresentacao = $request->get('apresentacao');
         $linkedIn = $request->get('linkedIn');
         $gitHub = $request->get('gitHub');
+        $nivelIngles = $request->input('ingles');
         $pretencaoSal = $request->get('pretencaoSalarial');
-        $curriculo = $request->get('curriculo');        
+        
+
+        echo $request->file('curriculo');
+        
+        
     }
 }
 

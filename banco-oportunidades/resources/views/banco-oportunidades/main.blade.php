@@ -1,8 +1,18 @@
 @extends('layout')
 
 @section('conteudo')    
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
     <div class="container">
-        <form action="/oportunidade/create" method="post">
+        <form action="/oportunidade/create" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group" >
                 <label >Informações Pessoais</label>
@@ -21,7 +31,7 @@
                 <input class="form-control mt-2" type="text" placeholder="url do seu linkedIn" name="linkedIn">
                 <input class="form-control mt-2" type="text" placeholder="url do seu github" name="gitHub">
                 <div class="mt-2">
-                    <select class="form-control" id="exampleFormControlSelect2">
+                    <select class="form-control" name="ingles" id="ingles" >
                         <option value="0" selected disabled>Nível de Inglês</option>
                         <option value="1" >Básico</option>                        
                         <option value="2" >Intermediário</option>                        
