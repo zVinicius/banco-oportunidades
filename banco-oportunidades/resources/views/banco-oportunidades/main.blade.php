@@ -1,6 +1,12 @@
 @extends('layout')
 
-@section('conteudo')    
+@section('conteudo')   
+@if (!empty($mensagem))
+    <div class='alert alert-success' >
+        {{$mensagem}}
+    </div>    
+@endif 
+
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Candidato;
 use App\NivelIngles;
 use Illuminate\Http\Request;
 
@@ -24,13 +25,42 @@ class OportunidadesController extends Controller{
         $apresentacao = $request->get('apresentacao');
         $linkedIn = $request->get('linkedIn');
         $gitHub = $request->get('gitHub');
-        $nivelIngles = $request->input('ingles');
+        $nivelIngles = ConverteNivelIngles($request->input('ingles'));
         $pretencaoSal = $request->get('pretencaoSalarial');
+
+        Candidato::create([
+            'nome' => $nome,
+            'email' => $email,
+            'fone'=> $fone,
+            'apresentacao'=>$apresentacao,
+            'linkedIn' => $linkedIn,
+            'gitHub' => $gitHub,
+            'ingles' => $nivelIngles,
+            'pretencaoSalarial' => number_format($pretencaoSal, 2),
+            'curriculo' => $request->file('curriculo')->storeAs('documentos', "CV-$nome-".date("d_m_Y_hisa").'.pdf')
+            ]);
         
 
-        echo $request->file('curriculo');
+            $request->session()->flash('mensagem', "Candidato {$nome} cadastrado com sucesso!");
+            return redirect()->route('main');
         
         
+    }
+
+    
+}
+
+function ConverteNivelIngles($codigo){
+    switch($codigo){
+        case 1:
+            return "Básico";
+            break;
+        case 2:
+            return "Intermediário";
+            break;
+        case 3:
+            return "Avançado";
+            break;
     }
 }
 
